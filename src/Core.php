@@ -37,4 +37,20 @@ class Core
 	{
 		return untrailingslashit(FDWPBP_DIR . $path);
 	}
+
+	/**
+	 * Returns a view from `views/` folder.
+	 *
+	 * @param	string		$filePath		File path without `.php` extension, where path parts are separated with dots (e.g. `path.to.file`).
+	 * @param	array		$passedArray	Input data to pass to the file. The array will be extracted into multiple variables (e.g. `['var1' => 'Foo', 'var2' => 'Bar']`).
+	 * @param	bool		$echo			Echo/print the view or just return the view (to save in a variable).
+	 *
+	 * @return	mixed
+	 */
+	public function view($filePath, $passedArray = [], $echo = true)
+	{
+		if (!$echo) return View::getInstance()->display($filePath, $passedArray);
+
+		echo View::getInstance()->display($filePath, $passedArray);
+	}
 }
