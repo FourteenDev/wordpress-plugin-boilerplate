@@ -6,13 +6,19 @@ class Core
 {
 	public static $instance = null;
 
+	private $options;
+
 	public static function getInstance()
 	{
 		self::$instance === null && self::$instance = new self;
 		return self::$instance;
 	}
 
-	public function __construct() {}
+	public function __construct()
+	{
+		if (is_admin())
+			Setting::getInstance();
+	}
 
 	/**
 	 * Returns plugin's URL path, without any slashes in the end (e.g. `https://Site.com/wp-content/plugins/my-plugin`).
@@ -52,5 +58,20 @@ class Core
 		if (!$echo) return View::getInstance()->display($filePath, $passedArray);
 
 		echo View::getInstance()->display($filePath, $passedArray);
+	}
+
+	/**
+	 * Returns a plugin option.
+	 *
+	 * @param	string		$optionName
+	 *
+	 * @return	mixed|null
+	 */
+	public function option($optionName)
+	{
+		if (empty($this->options))
+			$this->options = get_option(FDWPBP_SETTINGS_SLUG . '_options');
+
+		return (isset($this->options[$optionName]) && !empty($this->options[$optionName])) ? $this->options[$optionName] : null;
 	}
 }
