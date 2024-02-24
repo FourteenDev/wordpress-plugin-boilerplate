@@ -16,6 +16,8 @@ class Core
 
 	public function __construct()
 	{
+		Asset::getInstance();
+
 		if (is_admin())
 			Setting::getInstance();
 	}
