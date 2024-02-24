@@ -19,6 +19,8 @@ class Setting
 	{
 		add_action('admin_menu', [$this, 'createAdminMenu']);
 		add_action('admin_init', [$this, 'registerSettings']);
+
+		add_filter('plugin_action_links_' . FDWPBP_BASENAME, [$this, 'actionLinks']);
 	}
 
 	/**
@@ -127,5 +129,20 @@ class Setting
 			'description' => !empty($args['description']) ? trim($args['description']) : '',
 			'value'       => $value,
 		];
+	}
+
+	/**
+	 * Adds plugin action links to the plugins page.
+	 *
+	 * @param	array	$links
+	 *
+	 * @return	array
+	 *
+	 * @hooked	filter: `plugin_action_links_{FDWPBP_BASENAME}` - 10
+	 */
+	public function actionLinks($links)
+	{
+		$links[] = '<a href="' . get_admin_url(null, "admin.php?page={$this->menuSlug}") . '">' . esc_html__('Settings', FDWPBP_TEXT_DOMAIN) . '</a>';
+		return $links;
 	}
 }
