@@ -16,6 +16,7 @@ class Core
 
 	public function __construct()
 	{
+		Model::getInstance();
 		Asset::getInstance();
 
 		if (is_admin())
@@ -44,6 +45,16 @@ class Core
 	public function dir($path = '')
 	{
 		return untrailingslashit(FDWPBP_DIR . $path);
+	}
+
+	/**
+	 * Returns `Model` class.
+	 *
+	 * @return	Model
+	 */
+	public function model()
+	{
+		return Model::getInstance();
 	}
 
 	/**
