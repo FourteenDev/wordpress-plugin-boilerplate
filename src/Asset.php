@@ -22,6 +22,8 @@ class Asset
 	 * Enqueues admin styles and scripts.
 	 *
 	 * @return	void
+	 *
+	 * @hooked	action: `admin_enqueue_scripts` - 10
 	 */
 	public function enqueueAdminScripts()
 	{
@@ -32,6 +34,8 @@ class Asset
 	 * Enqueues public styles and scripts.
 	 *
 	 * @return	void
+	 *
+	 * @hooked	action: `wp_enqueue_scripts` - 10
 	 */
 	public function enqueuePublicScripts()
 	{
