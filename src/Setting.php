@@ -49,7 +49,13 @@ class Setting
 	 */
 	public function displaySettingsContent()
 	{
-		FDWPBP()->view('admin.settings.wrapper');
+		$activeTab = (!empty($_GET['tab']) && array_key_exists($_GET['tab'], $this->getTabs())) ? sanitize_key($_GET['tab']) : 'general';
+		$args      = [
+			'activeTab' => $activeTab,
+			'tabs'      => $this->getTabs(),
+		];
+
+		FDWPBP()->view('admin.settings.wrapper', $args);
 	}
 
 	/**
@@ -63,7 +69,8 @@ class Setting
 	{
 		register_setting("{$this->menuSlug}_group", $this->optionsName);
 
-		add_settings_section("{$this->menuSlug}_general", esc_html__('General Settings', FDWPBP_TEXT_DOMAIN), null, $this->menuSlug);
+		foreach ($this->getTabs() as $tabSlug => $tabLabel)
+			add_settings_section("{$this->menuSlug}_$tabSlug", $tabLabel, null, $this->menuSlug);
 
 		$fields = [
 			'example_field' => [
@@ -73,7 +80,17 @@ class Setting
 				'type'    => 'text',
 				'default' => '',
 				'args'    => [
-					'description' => esc_html__('Example Description.', FDWPBP_TEXT_DOMAIN),
+					'description' => esc_html__('Example description.', FDWPBP_TEXT_DOMAIN),
+				],
+			],
+			'test_field'    => [
+				'id'      => 'test_field',
+				'label'   => esc_html__('Second Tab Field', FDWPBP_TEXT_DOMAIN),
+				'section' => 'second',
+				'type'    => 'text',
+				'default' => '',
+				'args'    => [
+					'description' => esc_html__('Second tab description.', FDWPBP_TEXT_DOMAIN),
 				],
 			],
 		];
@@ -91,6 +108,21 @@ class Setting
 				['id' => $field['id'], 'default' => $field['default']] + $field['args']
 			);
 		}
+	}
+
+	/**
+	 * Returns tabs for the settings page.
+	 *
+	 * @return	array
+	 */
+	public function getTabs()
+	{
+		$tabs = [
+			'general' => esc_html__('General Settings', FDWPBP_TEXT_DOMAIN),
+			'second'  => esc_html__('Second Tab', FDWPBP_TEXT_DOMAIN),
+		];
+
+		return apply_filters('fdwpbp_settings_tabs', $tabs);
 	}
 
 	/**
