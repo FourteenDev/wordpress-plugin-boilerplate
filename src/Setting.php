@@ -6,8 +6,7 @@ class Setting
 {
 	public static $instance = null;
 
-	private $menuSlug    = FDWPBP_SETTINGS_SLUG . '_settings';
-	private $optionsName = FDWPBP_SETTINGS_SLUG . '_options';
+	private $menuSlug = FDWPBP_SETTINGS_SLUG . '_settings';
 
 	public static function getInstance()
 	{
@@ -17,10 +16,26 @@ class Setting
 
 	public function __construct()
 	{
+		$this->instantiateSettings();
+
 		add_action('admin_menu', [$this, 'createAdminMenu']);
-		add_action('admin_init', [$this, 'registerSettings']);
 
 		add_filter('plugin_action_links_' . FDWPBP_BASENAME, [$this, 'actionLinks']);
+	}
+
+	/**
+	 * Calls the `getInstance()` method on settings file in the `src/Settings/` directory.
+	 *
+	 * @return	void
+	 */
+	private function instantiateSettings()
+	{
+		foreach (glob(FDWPBP_DIR . '/src/Settings/*Settings.php') as $file)
+		{
+			$class = '\\' . __NAMESPACE__ . '\\Settings\\' . basename($file, '.php');
+
+			if (class_exists($class)) $class::getInstance();
+		}
 	}
 
 	/**
@@ -37,130 +52,27 @@ class Setting
 			esc_html__('Boilerplate Plugin', FDWPBP_TEXT_DOMAIN),
 			'manage_options',
 			$this->menuSlug,
-			[$this, 'displaySettingsContent'],
+			'',
 			'dashicons-wordpress'
 		);
-	}
 
-	/**
-	 * Outputs the content for settings page.
-	 *
-	 * @return	void
-	 */
-	public function displaySettingsContent()
-	{
-		$activeTab = (!empty($_GET['tab']) && array_key_exists($_GET['tab'], $this->getTabs())) ? sanitize_key($_GET['tab']) : 'general';
-		$args      = [
-			'activeTab' => $activeTab,
-			'tabs'      => $this->getTabs(),
-		];
-
-		FDWPBP()->view('admin.settings.wrapper', $args);
-	}
-
-	/**
-	 * Registers plugin settings in the admin menu.
-	 *
-	 * @return	void
-	 *
-	 * @hooked	action: `admin_init` - 10
-	 */
-	public function registerSettings()
-	{
-		register_setting("{$this->menuSlug}_group", $this->optionsName);
-
-		foreach ($this->getTabs() as $tabSlug => $tabLabel)
-			add_settings_section("{$this->menuSlug}_$tabSlug", $tabLabel, null, $this->menuSlug);
-
-		$fields = [
-			'example_field' => [
-				'id'      => 'example_field',
-				'label'   => esc_html__('Example Field', FDWPBP_TEXT_DOMAIN),
-				'section' => 'general',
-				'type'    => 'text',
-				'default' => '',
-				'args'    => [
-					'description' => esc_html__('Example description.', FDWPBP_TEXT_DOMAIN),
-				],
-			],
-			'test_field'    => [
-				'id'      => 'test_field',
-				'label'   => esc_html__('Second Tab Field', FDWPBP_TEXT_DOMAIN),
-				'section' => 'second',
-				'type'    => 'text',
-				'default' => '',
-				'args'    => [
-					'description' => esc_html__('Second tab description.', FDWPBP_TEXT_DOMAIN),
-				],
-			],
-		];
-
-		foreach ($fields as $field)
+		$position = 0;
+		foreach (apply_filters('fdwpbp_settings_submenus', []) as $slug => $submenu)
 		{
-			$callback = !empty($field['callback']) ? $field['callback'] : [$this, $field['type'] . 'FieldCallback'];
+			if (empty($submenu)) continue;
 
-			add_settings_field(
-				$field['id'],
-				$field['label'],
-				$callback,
-				$this->menuSlug,
-				"{$this->menuSlug}_" . $field['section'],
-				['id' => $field['id'], 'default' => $field['default']] + $field['args']
+			add_submenu_page(
+				!empty($submenu['parent_slug']) ? sanitize_key($submenu['parent_slug']) : $this->menuSlug,
+				esc_html($submenu['page_title']),
+				esc_html($submenu['menu_title']),
+				!empty($submenu['capability']) ? sanitize_key($submenu['capability']) : 'manage_options',
+				FDWPBP_SETTINGS_SLUG . '_' . sanitize_key($slug),
+				$submenu['callback'],
+				!empty($submenu['position']) ? intval($submenu['position']) : $position
 			);
+
+			$position++;
 		}
-	}
-
-	/**
-	 * Returns tabs for the settings page.
-	 *
-	 * @return	array
-	 */
-	public function getTabs()
-	{
-		$tabs = [
-			'general' => esc_html__('General Settings', FDWPBP_TEXT_DOMAIN),
-			'second'  => esc_html__('Second Tab', FDWPBP_TEXT_DOMAIN),
-		];
-
-		return apply_filters('fdwpbp_settings_tabs', $tabs);
-	}
-
-	/**
-	 * Outputs a text input field.
-	 *
-	 * @param	array	$args
-	 *
-	 * @return	string
-	 */
-	public function textFieldCallback($args)
-	{
-		$id = !empty($args['id']) ? $args['id'] : '';
-		if (empty($id)) return;
-
-		FDWPBP()->view('admin.settings.fields.text', $this->getSettingsValue($id, $args));
-	}
-
-	/**
-	 * Returns field's value.
-	 *
-	 * @param	string	$key
-	 * @param	array	$args
-	 *
-	 * @return	string
-	 */
-	private function getSettingsValue($key, $args)
-	{
-		$default = !empty($args['default']) ? $args['default'] : '';
-
-		$value = FDWPBP()->option($key);
-		if (empty($value)) $value = $default;
-
-		return [
-			'id'          => "{$this->optionsName}_$key",
-			'name'        => "{$this->optionsName}[$key]",
-			'description' => !empty($args['description']) ? trim($args['description']) : '',
-			'value'       => $value,
-		];
 	}
 
 	/**

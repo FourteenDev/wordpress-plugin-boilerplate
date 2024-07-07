@@ -1,6 +1,6 @@
 <div class="wrap fdwpbp-wrap">
 	<div class="fdwpbp-wrap__main">
-		<h1><?php esc_html_e('Settings', FDWPBP_TEXT_DOMAIN); ?></h1>
+		<h1><?php esc_html_e($title); ?></h1>
 
 		<div class="fdwpbp-tab-group">
 			<ul class="fdwpbp-tab">
@@ -22,8 +22,8 @@
 				<form method="post" action="options.php">
 					<table class="form-table">
 						<?php
-						settings_fields(FDWPBP_SETTINGS_SLUG . '_settings_group');
-						do_settings_fields(FDWPBP_SETTINGS_SLUG . '_settings', FDWPBP_SETTINGS_SLUG . "_settings_$activeTab"); ?>
+						settings_fields("{$menuSlug}_group");
+						do_settings_fields($menuSlug, "{$menuSlug}_$activeTab"); ?>
 					</table>
 
 					<?php submit_button(); ?>
