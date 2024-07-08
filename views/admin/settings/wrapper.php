@@ -1,6 +1,6 @@
 <div class="wrap fdwpbp-wrap">
 	<div class="fdwpbp-wrap__main">
-		<h1><?php esc_html_e($title); ?></h1>
+		<h1><?php echo esc_html($title); ?></h1>
 
 		<div class="fdwpbp-tab-group">
 			<ul class="fdwpbp-tab">
