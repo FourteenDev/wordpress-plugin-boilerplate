@@ -36,7 +36,7 @@ class MainSettings extends Base
 	}
 
 	/**
-	 * Returns tabs for this page.
+	 * Returns tabs for this submenu.
 	 *
 	 * @return	array
 	 */
@@ -49,7 +49,7 @@ class MainSettings extends Base
 	}
 
 	/**
-	 * Returns tabs for this page.
+	 * Returns fields for this submenu.
 	 *
 	 * @return	array
 	 */
