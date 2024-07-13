@@ -21,6 +21,8 @@ class Core
 
 		if (is_admin())
 			Setting::getInstance();
+
+		add_action('plugins_loaded', [$this, 'i18n']);
 	}
 
 	/**
@@ -86,5 +88,15 @@ class Core
 			$this->options = get_option(FDWPBP_SETTINGS_SLUG . '_options');
 
 		return (isset($this->options[$optionName]) && !empty($this->options[$optionName])) ? $this->options[$optionName] : null;
+	}
+
+	/**
+	 * Loads plugin's textdomain.
+	 *
+	 * @return	void
+	 */
+	public function i18n()
+	{
+		load_plugin_textdomain(FDWPBP_TEXT_DOMAIN, false, basename(FDWPBP_DIR) . DIRECTORY_SEPARATOR . 'languages');
 	}
 }
