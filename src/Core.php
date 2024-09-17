@@ -97,6 +97,6 @@ class Core
 	 */
 	public function i18n()
 	{
-		load_plugin_textdomain(FDWPBP_TEXT_DOMAIN, false, basename(FDWPBP_DIR) . DIRECTORY_SEPARATOR . 'languages');
+		load_plugin_textdomain('wordpress-boilerplate-plugin', false, basename(FDWPBP_DIR) . DIRECTORY_SEPARATOR . 'languages');
 	}
 }

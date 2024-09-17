@@ -48,8 +48,8 @@ class Setting
 	public function createAdminMenu()
 	{
 		add_menu_page(
-			esc_html__('WordPress Boilerplate Plugin', FDWPBP_TEXT_DOMAIN),
-			esc_html__('Boilerplate Plugin', FDWPBP_TEXT_DOMAIN),
+			esc_html__('WordPress Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
+			esc_html__('Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
 			'manage_options',
 			$this->menuSlug,
 			'',
@@ -86,7 +86,7 @@ class Setting
 	 */
 	public function actionLinks($links)
 	{
-		$links[] = '<a href="' . get_admin_url(null, "admin.php?page={$this->menuSlug}") . '">' . esc_html__('Settings', FDWPBP_TEXT_DOMAIN) . '</a>';
+		$links[] = '<a href="' . get_admin_url(null, "admin.php?page={$this->menuSlug}") . '">' . esc_html__('Settings', 'wordpress-boilerplate-plugin') . '</a>';
 		return $links;
 	}
 }

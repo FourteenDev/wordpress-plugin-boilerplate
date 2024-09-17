@@ -26,8 +26,8 @@ class MoreSettings extends Base
 	public function addSubmenu($submenus)
 	{
 		$submenus['more'] = [
-			'page_title' => esc_html__('More Boilerplate Settings', FDWPBP_TEXT_DOMAIN),
-			'menu_title' => esc_html__('More Settings', FDWPBP_TEXT_DOMAIN),
+			'page_title' => esc_html__('More Boilerplate Settings', 'wordpress-boilerplate-plugin'),
+			'menu_title' => esc_html__('More Settings', 'wordpress-boilerplate-plugin'),
 			'callback'   => [$this, 'displayContent'],
 			'position'   => 1,
 		];
@@ -43,8 +43,8 @@ class MoreSettings extends Base
 	public function getTabs()
 	{
 		return [
-			'general' => esc_html__('More General', FDWPBP_TEXT_DOMAIN),
-			'second'  => esc_html__('More Second', FDWPBP_TEXT_DOMAIN),
+			'general' => esc_html__('More General', 'wordpress-boilerplate-plugin'),
+			'second'  => esc_html__('More Second', 'wordpress-boilerplate-plugin'),
 		];
 	}
 
@@ -58,7 +58,7 @@ class MoreSettings extends Base
 		return [
 			'example_field_more' => [
 				'id'      => 'example_field_more',
-				'label'   => esc_html__('More Example Field', FDWPBP_TEXT_DOMAIN),
+				'label'   => esc_html__('More Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
 				'type'    => 'text',
 				'default' => '',
@@ -66,7 +66,7 @@ class MoreSettings extends Base
 			],
 			'test_field_more'    => [
 				'id'      => 'test_field_more',
-				'label'   => esc_html__('More Second Tab Field', FDWPBP_TEXT_DOMAIN),
+				'label'   => esc_html__('More Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'text',
 				'default' => '',

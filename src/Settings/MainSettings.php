@@ -26,8 +26,8 @@ class MainSettings extends Base
 	public function addSubmenu($submenus)
 	{
 		$submenus['settings'] = [
-			'page_title' => esc_html__('WordPress Boilerplate Plugin', FDWPBP_TEXT_DOMAIN),
-			'menu_title' => esc_html__('Boilerplate Plugin', FDWPBP_TEXT_DOMAIN),
+			'page_title' => esc_html__('WordPress Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
+			'menu_title' => esc_html__('Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
 			'callback'   => [$this, 'displayContent'],
 			'position'   => 0,
 		];
@@ -43,8 +43,8 @@ class MainSettings extends Base
 	public function getTabs()
 	{
 		return apply_filters('fdwpbp_settings_main_tabs', [
-			'general' => esc_html__('General Settings', FDWPBP_TEXT_DOMAIN),
-			'second'  => esc_html__('Second Tab', FDWPBP_TEXT_DOMAIN),
+			'general' => esc_html__('General Settings', 'wordpress-boilerplate-plugin'),
+			'second'  => esc_html__('Second Tab', 'wordpress-boilerplate-plugin'),
 		]);
 	}
 
@@ -58,22 +58,22 @@ class MainSettings extends Base
 		return apply_filters('fdwpbp_settings_main_fields', [
 			'example_field' => [
 				'id'      => 'example_field',
-				'label'   => esc_html__('Example Field', FDWPBP_TEXT_DOMAIN),
+				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
 				'type'    => 'text',
 				'default' => '',
 				'args'    => [
-					'description' => esc_html__('Example description.', FDWPBP_TEXT_DOMAIN),
+					'description' => esc_html__('Example description.', 'wordpress-boilerplate-plugin'),
 				],
 			],
 			'test_field'    => [
 				'id'      => 'test_field',
-				'label'   => esc_html__('Second Tab Field', FDWPBP_TEXT_DOMAIN),
+				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'text',
 				'default' => '',
 				'args'    => [
-					'description' => esc_html__('Second tab description.', FDWPBP_TEXT_DOMAIN),
+					'description' => esc_html__('Second tab description.', 'wordpress-boilerplate-plugin'),
 				],
 			],
 		]);

@@ -178,7 +178,7 @@ abstract class Base
 		$defaultTab = !empty($tabs) ? sanitize_key(array_key_first($tabs)) : 'general';
 		$activeTab  = (!empty($_GET['tab']) && array_key_exists($_GET['tab'], $tabs)) ? sanitize_key($_GET['tab']) : $defaultTab;
 		$args       = [
-			'title'     => __('Settings', FDWPBP_TEXT_DOMAIN),
+			'title'     => __('Settings', 'wordpress-boilerplate-plugin'),
 			'menuSlug'  => $this->menuSlug,
 			'tabs'      => $this->getTabs(),
 			'activeTab' => $activeTab,
