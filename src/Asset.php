@@ -21,13 +21,17 @@ class Asset
 	/**
 	 * Enqueues admin styles and scripts.
 	 *
+	 * @param	string	$hookSuffix		Current admin page.
+	 *
 	 * @return	void
 	 *
 	 * @hooked	action: `admin_enqueue_scripts` - 10
 	 */
-	public function enqueueAdminScripts()
+	public function enqueueAdminScripts($hookSuffix)
 	{
 		wp_enqueue_style('fdwpbp_admin', FDWPBP()->url('assets/admin/css/admin.css'), [], FDWPBP_VERSION);
+
+		wp_enqueue_script('fdwpbp_admin', FDWPBP()->url('assets/admin/js/admin.js'), [], FDWPBP_VERSION, true);
 	}
 
 	/**
@@ -40,5 +44,7 @@ class Asset
 	public function enqueuePublicScripts()
 	{
 		wp_enqueue_style('fdwpbp_public', FDWPBP()->url('assets/public/css/public.css'), [], FDWPBP_VERSION);
+
+		wp_enqueue_script('fdwpbp_public', FDWPBP()->url('assets/public/js/public.js'), [], FDWPBP_VERSION, true);
 	}
 }
