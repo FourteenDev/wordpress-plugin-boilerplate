@@ -74,7 +74,11 @@ abstract class Base
 				$callback,
 				$this->menuSlug,
 				"{$this->menuSlug}_" . $field['section'],
-				['id' => $field['id'], 'default' => $field['default']] + $field['args']
+				array_merge([
+					'id'      => $field['id'],
+					'default' => $field['default'],
+					'type'    => $field['type'],
+				], $field['args'])
 			);
 		}
 	}
@@ -141,7 +145,19 @@ abstract class Base
 		$id = !empty($args['id']) ? $args['id'] : '';
 		if (empty($id)) return;
 
-		FDWPBP()->view('admin.settings.fields.text', $this->getSettingsValue($id, $args));
+		FDWPBP()->view('admin.settings.fields.input', $this->getSettingsValue($id, $args));
+	}
+
+	/**
+	 * Outputs a number input field.
+	 *
+	 * @param	array	$args
+	 *
+	 * @return	string
+	 */
+	public function numberFieldCallback($args)
+	{
+		$this->textFieldCallback($args);
 	}
 
 	/**
@@ -163,7 +179,8 @@ abstract class Base
 			'id'          => "{$this->optionsName}_$key",
 			'name'        => "{$this->optionsName}[$key]",
 			'description' => !empty($args['description']) ? trim($args['description']) : '',
-			'value'       => $value,
+			'value'       => esc_attr($value),
+			'type'        => esc_attr($args['type']),
 		];
 	}
 

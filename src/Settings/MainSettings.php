@@ -56,7 +56,7 @@ class MainSettings extends Base
 	public function getFields()
 	{
 		return apply_filters('fdwpbp_settings_main_fields', [
-			'example_field' => [
+			'example_field'        => [
 				'id'      => 'example_field',
 				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
@@ -66,7 +66,7 @@ class MainSettings extends Base
 					'description' => esc_html__('Example description.', 'wordpress-boilerplate-plugin'),
 				],
 			],
-			'test_field'    => [
+			'test_field'           => [
 				'id'      => 'test_field',
 				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
@@ -75,6 +75,14 @@ class MainSettings extends Base
 				'args'    => [
 					'description' => esc_html__('Second tab description.', 'wordpress-boilerplate-plugin'),
 				],
+			],
+			'test_number_field'    => [
+				'id'      => 'test_number_field',
+				'label'   => esc_html__('Number Field', 'wordpress-boilerplate-plugin'),
+				'section' => 'second',
+				'type'    => 'number',
+				'default' => 0,
+				'args'    => [],
 			],
 		]);
 	}
