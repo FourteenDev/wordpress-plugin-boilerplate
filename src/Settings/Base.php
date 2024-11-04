@@ -134,6 +134,21 @@ abstract class Base
 	}
 
 	/**
+	 * Outputs an input field.
+	 *
+	 * @param	array	$args
+	 *
+	 * @return	string
+	 */
+	public function inputFieldCallback($args)
+	{
+		$id = !empty($args['id']) ? $args['id'] : '';
+		if (empty($id)) return;
+
+		FDWPBP()->view('admin.settings.fields.input', $this->getSettingsValue($id, $args));
+	}
+
+	/**
 	 * Outputs a text input field.
 	 *
 	 * @param	array	$args
@@ -142,10 +157,7 @@ abstract class Base
 	 */
 	public function textFieldCallback($args)
 	{
-		$id = !empty($args['id']) ? $args['id'] : '';
-		if (empty($id)) return;
-
-		FDWPBP()->view('admin.settings.fields.input', $this->getSettingsValue($id, $args));
+		$this->inputFieldCallback($args);
 	}
 
 	/**
@@ -157,7 +169,19 @@ abstract class Base
 	 */
 	public function numberFieldCallback($args)
 	{
-		$this->textFieldCallback($args);
+		$this->inputFieldCallback($args);
+	}
+
+	/**
+	 * Outputs a checkbox input field.
+	 *
+	 * @param	array	$args
+	 *
+	 * @return	string
+	 */
+	public function checkboxFieldCallback($args)
+	{
+		$this->inputFieldCallback($args);
 	}
 
 	/**
