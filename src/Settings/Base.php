@@ -92,11 +92,19 @@ abstract class Base
 	 */
 	public function validateSettings($input)
 	{
-		$options = get_option($this->optionsName);
+		$options = get_option($this->optionsName, []);
+		$input   = apply_filters('fdwpbp_before_validate_settings', $input, $options);
 
-		// Update only the neede options
+		// Allow values modification via filters
+		if (is_array($input))
+			foreach ($input as $key => $value)
+				$input[$key] = apply_filters("fdwpbp_validate_input_$key", $value, $key, $input, $options);
+
+		// Update only the needed options
 		foreach ($input as $key => $value)
 			$options[$key] = $value;
+
+		do_action('fdwpbp_validate_settings', $input, $options);
 
 		return $options;
 	}
