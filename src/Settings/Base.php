@@ -189,6 +189,9 @@ abstract class Base
 	 */
 	public function checkboxFieldCallback($args)
 	{
+		// Add a hidden input before checkouts to prevent them from unsetting from the options when unchecked
+        $this->inputFieldCallback(array_merge($args, ['type' => 'hidden', 'value' => '0']));
+
 		$this->inputFieldCallback($args);
 	}
 
@@ -204,13 +207,13 @@ abstract class Base
 	{
 		$default = !empty($args['default']) ? $args['default'] : '';
 
-		$value = FDWPBP()->option($key);
-		if (empty($value)) $value = $default;
+		$value = isset($args['value']) ? $args['value'] : FDWPBP()->option($key);
+		if ($value === null) $value = $default;
 
 		return [
 			'id'          => "{$this->optionsName}_$key",
 			'name'        => "{$this->optionsName}[$key]",
-			'description' => !empty($args['description']) ? trim($args['description']) : '',
+			'description' => !empty($args['description']) && $args['type'] !== 'hidden' ? trim($args['description']) : '',
 			'value'       => esc_attr($value),
 			'type'        => esc_attr($args['type']),
 		];

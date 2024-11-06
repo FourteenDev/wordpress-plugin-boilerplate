@@ -87,7 +87,7 @@ class Core
 		if (empty($this->options))
 			$this->options = get_option(FDWPBP_SETTINGS_SLUG . '_options');
 
-		return (isset($this->options[$optionName]) && !empty($this->options[$optionName])) ? $this->options[$optionName] : null;
+		return isset($this->options[$optionName]) ? $this->options[$optionName] : null;
 	}
 
 	/**
