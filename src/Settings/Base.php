@@ -22,7 +22,7 @@ abstract class Base
 		add_action('admin_init', [$this, 'registerSettings']);
 
 		/* global $pagenow;
-        if (is_admin() && $pagenow == 'admin.php' && isset($_REQUEST['page']) && $_REQUEST['page'] == $this->menuSlug)
+		if (is_admin() && $pagenow == 'admin.php' && isset($_REQUEST['page']) && $_REQUEST['page'] == $this->menuSlug)
 		{
 			
 		} */
@@ -190,7 +190,7 @@ abstract class Base
 	public function checkboxFieldCallback($args)
 	{
 		// Add a hidden input before checkouts to prevent them from unsetting from the options when unchecked
-        $this->inputFieldCallback(array_merge($args, ['type' => 'hidden', 'value' => '0']));
+		$this->inputFieldCallback(array_merge($args, ['type' => 'hidden', 'value' => '0']));
 
 		$this->inputFieldCallback($args);
 	}
