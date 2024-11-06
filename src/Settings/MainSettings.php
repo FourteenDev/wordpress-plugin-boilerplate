@@ -84,6 +84,14 @@ class MainSettings extends Base
 				'default' => 0,
 				'args'    => [],
 			],
+			'test_checkbox_field'    => [
+				'id'      => 'test_checkbox_field',
+				'label'   => esc_html__('Checkbox Field', 'wordpress-boilerplate-plugin'),
+				'section' => 'second',
+				'type'    => 'checkbox',
+				'default' => true,
+				'args'    => [],
+			],
 		]);
 	}
 }
