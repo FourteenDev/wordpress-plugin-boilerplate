@@ -28,6 +28,20 @@ define('FDWPBP_OPTIONS_KEY_DB_VERSION', 'fdwpbp_db_version');
 require_once 'vendor/autoload.php';
 require_once 'functions.php';
 
+// Uncomment this to check for a required plugin/function before calling the core class
+/* if (!function_exists('get_field'))
+{
+	add_action('admin_notices', function ()
+	{
+		?>
+		<div class="notice notice-error">
+			<p><?php esc_html_e('WordPress Plugin Boilerplate: Please enable ACF plugin!', 'wordpress-boilerplate-plugin'); ?></p>
+		</div>
+		<?php
+	});
+	return;
+} */
+
 function FDWPBP()
 {
 	return Core::getInstance();
