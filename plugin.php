@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Plugin Name:     WordPress Plugin Boilerplate
- * Plugin URI:      https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate
- * Description:     A boilerplate plugin for WordPress.
- * Version:         1.1.0
- * Author:          Fourteen Development
- * Author URI:      https://Fourteen.dev/
- * License:         MIT
- * License URI:     https://opensource.org/license/mit/
- * Text Domain:     wordpress-boilerplate-plugin
- * Domain Path:     /languages
+ * Plugin Name: WordPress Plugin Boilerplate
+ * Plugin URI:  https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate
+ * Description: A boilerplate plugin for WordPress.
+ * Version:     1.1.0
+ * Author:      Fourteen Development
+ * Author URI:  https://Fourteen.dev/
+ * License:     MIT
+ * License URI: https://opensource.org/license/mit/
+ * Text Domain: wordpress-boilerplate-plugin
+ * Domain Path: /languages
  */
 
 use WordPressBoilerplatePlugin\Core;
