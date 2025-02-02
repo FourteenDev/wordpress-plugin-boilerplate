@@ -1,3 +1,4 @@
+<?php if (!defined('ABSPATH')) exit; ?>
 <div class="wrap fdwpbp-wrap">
 	<div class="fdwpbp-wrap__main">
 		<h1><?php echo esc_html($title); ?></h1>
