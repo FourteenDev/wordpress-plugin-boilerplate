@@ -1,12 +1,12 @@
 <?php
 
-namespace WordPressBoilerplatePlugin\Settings;
+namespace WordPressBoilerplatePlugin\Menus;
 
-class MainSettings extends Base
+class MainMenu extends Base
 {
 	public static $instance = null;
 
-	protected $menuSlug = FDWPBP_SETTINGS_SLUG . '_settings';
+	protected $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
 
 	public static function getInstance()
 	{
@@ -21,7 +21,7 @@ class MainSettings extends Base
 	 *
 	 * @return	array
 	 *
-	 * @hooked	filter: `fdwpbp_settings_submenus` - 10
+	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
 	public function addSubmenu($submenus)
 	{
@@ -42,7 +42,7 @@ class MainSettings extends Base
 	 */
 	public function getTabs()
 	{
-		return apply_filters('fdwpbp_settings_main_tabs', [
+		return apply_filters('fdwpbp_menus_main_tabs', [
 			'general' => esc_html__('General Settings', 'wordpress-boilerplate-plugin'),
 			'second'  => esc_html__('Second Tab', 'wordpress-boilerplate-plugin'),
 		]);
@@ -55,8 +55,8 @@ class MainSettings extends Base
 	 */
 	public function getFields()
 	{
-		return apply_filters('fdwpbp_settings_main_fields', [
-			'example_field'        => [
+		return apply_filters('fdwpbp_menus_main_fields', [
+			'example_field'       => [
 				'id'      => 'example_field',
 				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
@@ -66,7 +66,7 @@ class MainSettings extends Base
 					'description' => esc_html__('Example description.', 'wordpress-boilerplate-plugin'),
 				],
 			],
-			'test_field'           => [
+			'test_field'          => [
 				'id'      => 'test_field',
 				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
@@ -76,7 +76,7 @@ class MainSettings extends Base
 					'description' => esc_html__('Second tab description.', 'wordpress-boilerplate-plugin'),
 				],
 			],
-			'test_number_field'    => [
+			'test_number_field'   => [
 				'id'      => 'test_number_field',
 				'label'   => esc_html__('Number Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
@@ -84,7 +84,7 @@ class MainSettings extends Base
 				'default' => 0,
 				'args'    => [],
 			],
-			'test_checkbox_field'    => [
+			'test_checkbox_field' => [
 				'id'      => 'test_checkbox_field',
 				'label'   => esc_html__('Checkbox Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',

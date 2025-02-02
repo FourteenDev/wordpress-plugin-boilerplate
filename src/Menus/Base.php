@@ -1,13 +1,13 @@
 <?php
 
-namespace WordPressBoilerplatePlugin\Settings;
+namespace WordPressBoilerplatePlugin\Menus;
 
 abstract class Base
 {
-	protected $optionsName = FDWPBP_SETTINGS_SLUG . '_options';
+	protected $optionsName = FDWPBP_MENUS_SLUG . '_options';
 
 	/**
-	 * **(REQUIRED)** Slug for this submenu. Recommended format: `FDWPBP_SETTINGS_SLUG . '_{NAME}'`.
+	 * **(REQUIRED)** Slug for this submenu. Recommended format: `FDWPBP_MENUS_SLUG . '_{NAME}'`.
 	 *
 	 * @var	string
 	 */
@@ -18,11 +18,11 @@ abstract class Base
 		if (empty($this->menuSlug))
 			throw new \LogicException(get_class($this) . ' must initialize $menuSlug property!');
 
-		add_filter('fdwpbp_settings_submenus', [$this, 'addSubmenu']);
+		add_filter('fdwpbp_menus_submenus', [$this, 'addSubmenu']);
 		add_action('admin_init', [$this, 'registerSettings']);
 
 		/* global $pagenow;
-		if (is_admin() && $pagenow == 'admin.php' && isset($_REQUEST['page']) && $_REQUEST['page'] == $this->menuSlug)
+		if (is_admin() && $pagenow == 'admin.php' && !empty($_GET['page']) && $_GET['page'] == $this->menuSlug)
 		{
 			
 		} */
@@ -46,7 +46,7 @@ abstract class Base
 	 *
 	 * @return	array
 	 *
-	 * @hooked	filter: `fdwpbp_settings_submenus` - 10
+	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
 	abstract function addSubmenu($submenus);
 

@@ -22,7 +22,7 @@ define('FDWPBP_FILE', __FILE__);
 define('FDWPBP_URL', plugin_dir_url(FDWPBP_FILE));
 define('FDWPBP_DIR', plugin_dir_path(FDWPBP_FILE));
 define('FDWPBP_BASENAME', plugin_basename(FDWPBP_FILE));
-define('FDWPBP_SETTINGS_SLUG', 'fdwpbp');
+define('FDWPBP_MENUS_SLUG', 'fdwpbp');
 define('FDWPBP_OPTIONS_KEY_DB_VERSION', 'fdwpbp_db_version');
 
 require_once 'vendor/autoload.php';

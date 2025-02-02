@@ -1,12 +1,12 @@
 <?php
 
-namespace WordPressBoilerplatePlugin\Settings;
+namespace WordPressBoilerplatePlugin\Menus;
 
-class MoreSettings extends Base
+class SecondMenu extends Base
 {
 	public static $instance = null;
 
-	protected $menuSlug = FDWPBP_SETTINGS_SLUG . '_more';
+	protected $menuSlug = FDWPBP_MENUS_SLUG . '_second';
 
 	public static function getInstance()
 	{
@@ -21,13 +21,13 @@ class MoreSettings extends Base
 	 *
 	 * @return	array
 	 *
-	 * @hooked	filter: `fdwpbp_settings_submenus` - 10
+	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
 	public function addSubmenu($submenus)
 	{
-		$submenus['more'] = [
+		$submenus['second'] = [
 			'page_title' => esc_html__('More Boilerplate Settings', 'wordpress-boilerplate-plugin'),
-			'menu_title' => esc_html__('More Settings', 'wordpress-boilerplate-plugin'),
+			'menu_title' => esc_html__('Second Menu', 'wordpress-boilerplate-plugin'),
 			'callback'   => [$this, 'displayContent'],
 			'position'   => 1,
 		];
@@ -43,8 +43,8 @@ class MoreSettings extends Base
 	public function getTabs()
 	{
 		return [
-			'general' => esc_html__('More General', 'wordpress-boilerplate-plugin'),
-			'second'  => esc_html__('More Second', 'wordpress-boilerplate-plugin'),
+			'general' => esc_html__('General', 'wordpress-boilerplate-plugin'),
+			'second'  => esc_html__('Second', 'wordpress-boilerplate-plugin'),
 		];
 	}
 
@@ -56,17 +56,17 @@ class MoreSettings extends Base
 	public function getFields()
 	{
 		return [
-			'example_field_more' => [
-				'id'      => 'example_field_more',
-				'label'   => esc_html__('More Example Field', 'wordpress-boilerplate-plugin'),
+			'example_field_second' => [
+				'id'      => 'example_field_second',
+				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
 				'type'    => 'text',
 				'default' => '',
 				'args'    => [],
 			],
-			'test_field_more'    => [
-				'id'      => 'test_field_more',
-				'label'   => esc_html__('More Second Tab Field', 'wordpress-boilerplate-plugin'),
+			'test_field_second'    => [
+				'id'      => 'test_field_second',
+				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'text',
 				'default' => '',
