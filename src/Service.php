@@ -3,6 +3,8 @@
 namespace WordPressBoilerplatePlugin;
 
 use WordPressBoilerplatePlugin\Services\Posts\Post;
+use WordPressBoilerplatePlugin\Services\Integrations\Elementor;
+use WordPressBoilerplatePlugin\Services\Integrations\RankMath;
 
 class Service
 {
@@ -16,6 +18,11 @@ class Service
 
 	public function __construct()
 	{
+		// Posts
 		// new Post();
+
+		// Integrations
+		// new Elementor();
+		// new RankMath();
 	}
 }
