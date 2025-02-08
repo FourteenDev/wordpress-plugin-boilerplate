@@ -29,7 +29,7 @@ class MainMenu extends Base
 			'page_title' => esc_html__('WordPress Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
 			'menu_title' => esc_html__('Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
 			'callback'   => [$this, 'displayContent'],
-			'position'   => 0,
+			'position'   => 1,
 		];
 
 		return $submenus;

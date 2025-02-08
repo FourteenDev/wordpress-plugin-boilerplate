@@ -29,7 +29,7 @@ class CustomMenu extends Base
 			'page_title' => esc_html__('Custom Menu', 'wordpress-boilerplate-plugin'),
 			'menu_title' => esc_html__('Custom Menu', 'wordpress-boilerplate-plugin'),
 			'callback'   => [$this, 'displayContent'],
-			'position'   => 2,
+			'position'   => 3,
 		];
 
 		return $submenus;
