@@ -22,6 +22,8 @@ class Core
 		if (is_admin())
 			Menu::getInstance();
 
+		Service::getInstance();
+
 		add_action('plugins_loaded', [$this, 'i18n']);
 	}
 
