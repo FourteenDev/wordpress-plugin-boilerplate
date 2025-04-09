@@ -2,6 +2,8 @@
 
 namespace WordPressBoilerplatePlugin;
 
+use WordPressBoilerplatePlugin\Shortcodes\ShortcodeManager;
+
 class Core
 {
 	public static $instance = null;
@@ -22,7 +24,7 @@ class Core
 		if (is_admin())
 			Menu::getInstance();
 		else
-			Shortcode::getInstance();
+			new ShortcodeManager();
 
 		Service::getInstance();
 
