@@ -29,6 +29,7 @@ class Asset
 	 */
 	public function enqueueAdminScripts($hookSuffix)
 	{
+		// if (strpos($hookSuffix, FDWPBP_MENUS_SLUG) !== false)
 		wp_enqueue_style('fdwpbp_admin', FDWPBP()->url('assets/admin/css/admin.css'), [], FDWPBP_VERSION);
 
 		wp_enqueue_script('fdwpbp_admin', FDWPBP()->url('assets/admin/js/admin.js'), [], FDWPBP_VERSION, true);
