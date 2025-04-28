@@ -4,18 +4,13 @@ namespace WordPressBoilerplatePlugin;
 
 class Menu
 {
-	public static $instance = null;
+	protected $container;
 
 	private $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
 
-	public static function getInstance()
+	public function __construct(Container $container)
 	{
-		self::$instance === null && self::$instance = new self;
-		return self::$instance;
-	}
-
-	public function __construct()
-	{
+		$this->container = $container;
 		$this->instantiateMenus();
 
 		add_action('admin_menu', [$this, 'createAdminMenu']);
@@ -39,7 +34,8 @@ class Menu
 		{
 			$class = '\\' . __NAMESPACE__ . '\\Menus\\' . basename($file, '.php');
 
-			if (class_exists($class)) $class::getInstance();
+			if (class_exists($class))
+				$this->container->make($class);
 		}
 	}
 

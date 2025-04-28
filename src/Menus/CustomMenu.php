@@ -4,15 +4,7 @@ namespace WordPressBoilerplatePlugin\Menus;
 
 class CustomMenu extends Base
 {
-	public static $instance = null;
-
 	protected $menuSlug = FDWPBP_MENUS_SLUG . '_custom';
-
-	public static function getInstance()
-	{
-		self::$instance === null && self::$instance = new self;
-		return self::$instance;
-	}
 
 	/**
 	 * Adds the submenu.
