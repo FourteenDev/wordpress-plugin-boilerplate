@@ -13,6 +13,7 @@
  * Domain Path: /languages
  */
 
+use WordPressBoilerplatePlugin\Container;
 use WordPressBoilerplatePlugin\Core;
 
 if (!defined('ABSPATH')) return;
@@ -42,8 +43,17 @@ require_once 'functions.php';
 	return;
 } */
 
+// Initialize container and bind Core class
+$fdwpbpContainer = new Container();
+$fdwpbpContainer->singleton(Container::class, function() use ($fdwpbpContainer) { return $fdwpbpContainer; });
+$fdwpbpContainer->singleton(Core::class);
+
+// Initialize the core
+$core = $fdwpbpContainer->make(Core::class);
+
 function FDWPBP()
 {
-	return Core::getInstance();
+	global $fdwpbpContainer;
+	return $fdwpbpContainer->make(Core::class);
 }
 FDWPBP();

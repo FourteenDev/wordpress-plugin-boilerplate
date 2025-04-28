@@ -6,29 +6,46 @@ use WordPressBoilerplatePlugin\Shortcodes\ShortcodeManager;
 
 class Core
 {
-	public static $instance = null;
+	protected $container;
 
 	private $options;
 
-	public static function getInstance()
+	public function __construct(Container $container)
 	{
-		self::$instance === null && self::$instance = new self;
-		return self::$instance;
-	}
+		$this->container = $container;
+		$this->container->singleton(Core::class, function () { return $this; });
 
-	public function __construct()
-	{
-		Model::getInstance();
-		Asset::getInstance();
+		$this->registerDependencies();
+
+		// Initialize dependencies through container
+		$this->container->make(Model::class);
+		$this->container->make(Asset::class);
 
 		if (is_admin())
-			Menu::getInstance();
-		else
-			new ShortcodeManager();
+		{
+			$this->container->make(Menu::class);
+		} else {
+			$this->container->make(ShortcodeManager::class);
+		}
 
-		Service::getInstance();
+		$this->container->make(Service::class);
 
 		add_action('plugins_loaded', [$this, 'i18n']);
+	}
+
+	/**
+	 * Registers all the dependencies needed for the plugin.
+	 *
+	 * @return	void
+	 */
+	private function registerDependencies()
+	{
+		$this->container->singleton(Model::class);
+		$this->container->singleton(Asset::class);
+		$this->container->singleton(Menu::class);
+		$this->container->singleton(ShortcodeManager::class);
+		$this->container->singleton(Service::class);
+		$this->container->singleton(View::class);
 	}
 
 	/**
@@ -62,7 +79,7 @@ class Core
 	 */
 	public function model()
 	{
-		return Model::getInstance();
+		return $this->container->make(Model::class);
 	}
 
 	/**
@@ -76,9 +93,11 @@ class Core
 	 */
 	public function view($filePath, $passedArray = [], $echo = true)
 	{
-		if (!$echo) return View::getInstance()->display($filePath, $passedArray);
+		$view = $this->container->make(View::class);
 
-		echo View::getInstance()->display($filePath, $passedArray);
+		if (!$echo) return $view->display($filePath, $passedArray);
+
+		echo $view->display($filePath, $passedArray);
 	}
 
 	/**
