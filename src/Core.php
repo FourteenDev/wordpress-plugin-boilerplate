@@ -69,7 +69,7 @@ class Core
 
 		$this->container->make(Service::class);
 
-		\add_action('plugins_loaded', [$this, 'i18n']);
+		\add_action('init', [$this, 'i18n'], 1);
 	}
 
 	/**
