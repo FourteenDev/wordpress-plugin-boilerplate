@@ -1,6 +1,6 @@
 # WordPress Plugin Boilerplate
 
-`v3.0.0` ([Changelog](CHANGELOG.md))
+`v3.1.0`
 
 A boilerplate plugin for WordPress.
 

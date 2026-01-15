@@ -4,7 +4,7 @@
  * Plugin Name: WordPress Plugin Boilerplate
  * Plugin URI:  https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate
  * Description: A boilerplate plugin for WordPress.
- * Version:     3.0.0
+ * Version:     3.1.0
  * Author:      Fourteen Development
  * Author URI:  https://Fourteen.dev/
  * License:     MIT
@@ -18,7 +18,7 @@ use WordPressBoilerplatePlugin\Core;
 
 if (!defined('ABSPATH')) return;
 
-define('FDWPBP_VERSION', '3.0.0');
+define('FDWPBP_VERSION', '3.1.0');
 define('FDWPBP_FILE', __FILE__);
 define('FDWPBP_URL', plugin_dir_url(FDWPBP_FILE));
 define('FDWPBP_DIR', plugin_dir_path(FDWPBP_FILE));
