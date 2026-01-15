@@ -73,6 +73,18 @@ class Core
 	}
 
 	/**
+	 * Loads plugin's textdomain.
+	 *
+	 * @return	void
+	 *
+	 * @hooked	action: `init` - 1
+	 */
+	public function i18n()
+	{
+		load_plugin_textdomain('wordpress-boilerplate-plugin', false, basename(FDWPBP_DIR) . DIRECTORY_SEPARATOR . 'languages');
+	}
+
+	/**
 	 * Returns plugin's URL path, without any slashes in the end (e.g. `https://Site.com/wp-content/plugins/my-plugin`).
 	 *
 	 * @param	string	$path	Path to append to the end of the URL, without any slashes in the beginning (e.g. `path/to/my-file.php`).
@@ -139,15 +151,5 @@ class Core
 			$this->options = get_option(FDWPBP_MENUS_SLUG . '_options', []);
 
 		return $this->options[$optionName] ?? $default;
-	}
-
-	/**
-	 * Loads plugin's textdomain.
-	 *
-	 * @return	void
-	 */
-	public function i18n()
-	{
-		load_plugin_textdomain('wordpress-boilerplate-plugin', false, basename(FDWPBP_DIR) . DIRECTORY_SEPARATOR . 'languages');
 	}
 }
