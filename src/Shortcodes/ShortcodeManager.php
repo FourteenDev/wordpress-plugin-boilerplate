@@ -16,7 +16,7 @@ class ShortcodeManager
 	 */
 	private function registerAllShortcodes()
 	{
-		foreach (glob(FDTBWPB_DIR . '/src/Shortcodes/*Shortcode.php') as $file)
+		foreach (glob(FDWPBP_DIR . '/src/Shortcodes/*Shortcode.php') as $file)
 		{
 			$class = '\\' . __NAMESPACE__ . '\\' . basename($file, '.php');
 
