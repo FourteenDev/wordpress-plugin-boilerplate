@@ -128,16 +128,17 @@ class Core
 	/**
 	 * Returns a plugin option.
 	 *
-	 * @param	string	$optionName
+	 * @param	string	$optionName	Option name.
+	 * @param	mixed	$default	Default value if option not found.
 	 *
 	 * @return	mixed
 	 */
-	public function option($optionName): mixed
+	public function option(string $optionName, mixed $default = null): mixed
 	{
 		if (empty($this->options))
-			$this->options = get_option(FDWPBP_MENUS_SLUG . '_options');
+			$this->options = get_option(FDWPBP_MENUS_SLUG . '_options', []);
 
-		return isset($this->options[$optionName]) ? $this->options[$optionName] : null;
+		return $this->options[$optionName] ?? $default;
 	}
 
 	/**
