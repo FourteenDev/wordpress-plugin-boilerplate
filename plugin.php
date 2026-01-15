@@ -61,6 +61,8 @@ $core = $fdwpbpContainer->make(Core::class);
 function FDWPBP()
 {
 	global $fdwpbpContainer;
+	if (!$fdwpbpContainer) return null; // Happens only when activating the plugin 
+
 	return $fdwpbpContainer->make(Core::class);
 }
 FDWPBP();
