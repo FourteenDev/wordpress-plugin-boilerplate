@@ -51,6 +51,13 @@ $fdwpbpContainer->singleton(Core::class);
 // Initialize the core
 $core = $fdwpbpContainer->make(Core::class);
 
+/**
+ * Returns the core class of the plugin.
+ *
+ * @global	Container	$fdwpbpContainer
+ *
+ * @return	Core
+ */
 function FDWPBP()
 {
 	global $fdwpbpContainer;
