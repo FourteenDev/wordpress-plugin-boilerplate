@@ -84,6 +84,16 @@ class MainMenu extends Base
 				'default' => true,
 				'args'    => [],
 			],
+			'test_textarea_field' => [
+				'id'      => 'test_textarea_field',
+				'label'   => esc_html__('Textarea Field', 'wordpress-boilerplate-plugin'),
+				'section' => 'second',
+				'type'    => 'textarea',
+				'default' => '',
+				'args'    => [
+					'placeholder' => esc_html__('Placeholder', 'wordpress-boilerplate-plugin'),
+				],
+			],
 		]);
 	}
 }
