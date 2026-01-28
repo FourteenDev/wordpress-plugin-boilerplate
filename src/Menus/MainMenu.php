@@ -6,6 +6,14 @@ class MainMenu extends Base
 {
 	protected $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
 
+	public function __construct()
+	{
+		parent::__construct();
+
+		// Uncomment if you want to change select options programmatically
+		// add_filter('fdwpbp_menus_main_fields', [$this, 'populateSelectValues']);
+	}
+
 	/**
 	 * Adds the submenu.
 	 *
@@ -94,6 +102,44 @@ class MainMenu extends Base
 					'placeholder' => esc_html__('Placeholder', 'wordpress-boilerplate-plugin'),
 				],
 			],
+			'test_select_field' => [
+				'id'      => 'test_select_field',
+				'label'   => esc_html__('Select Field', 'wordpress-boilerplate-plugin'),
+				'section' => 'second',
+				'type'    => 'select',
+				'default' => '',
+				'args'    => [
+					'options'  => [
+						// Either keep the options empty here and populate them using the `fdwpbp_menus_main_fields` filter like below
+						// '' => '',
+
+						// Or add options manually yourself
+						'key1' => esc_html__('Value 01', 'wordpress-boilerplate-plugin'),
+						'key2' => esc_html__('Value 02', 'wordpress-boilerplate-plugin'),
+					],
+					// 'multiple' => true,
+				],
+			],
 		]);
+	}
+
+	/**
+	 * Adds some example values to the select field.
+	 *
+	 * @param	array	$fields
+	 *
+	 * @return	array
+	 *
+	 * @hooked	filter: `fdwpbp_menus_main_fields` - 10
+	 */
+	public function populateSelectValues($fields)
+	{
+		if (empty($fields['test_select_field'])) return $fields;
+
+		$fields['test_select_field']['args']['options'] = [];
+		foreach ([1, 2, 3, 4, 5] as $number)
+			$fields['test_select_field']['args']['options']["key$number"] = "Value 0$number";
+
+		return $fields;
 	}
 }
