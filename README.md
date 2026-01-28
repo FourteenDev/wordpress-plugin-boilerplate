@@ -1,6 +1,6 @@
 # WordPress Plugin Boilerplate
 
-`v3.1.0`
+`v3.2.0`
 
 A boilerplate plugin for WordPress.
 
