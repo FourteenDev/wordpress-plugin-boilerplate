@@ -12,6 +12,9 @@ class MainMenu extends Base
 
 		// Uncomment if you want to change select options programmatically
 		// add_filter('fdwpbp_menus_main_fields', [$this, 'populateSelectValues']);
+
+		// Uncomment if you want to sanitize a specific field before saving (Or use `fdwpbp_before_validate_settings` filter to access all input values)
+		// add_filter('fdwpbp_validate_input_example_field', [$this, 'sanitizeExampleField']);
 	}
 
 	/**
@@ -141,5 +144,22 @@ class MainMenu extends Base
 			$fields['test_select_field']['args']['options']["key$number"] = "Value 0$number";
 
 		return $fields;
+	}
+
+	/**
+	 * Sanitizes the `example_field` option.
+	 *
+	 * @param	string	$value		Submitted value.
+	 *
+	 * @return	string				Sanitized value.
+	 *
+	 * @hooked	filter: `fdwpbp_validate_input_example_field` - 10
+	 */
+	public function sanitizeExampleField($value)
+	{
+		if ($value == 'this')
+			$value = 'that';
+
+		return $value;
 	}
 }
