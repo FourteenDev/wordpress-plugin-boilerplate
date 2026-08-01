@@ -53,16 +53,12 @@ class SecondMenu extends Base
 				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
 				'type'    => 'text',
-				'default' => '',
-				'args'    => [],
 			],
 			'test_field_second'    => [
 				'id'      => 'test_field_second',
 				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'text',
-				'default' => '',
-				'args'    => [],
 			],
 		];
 	}

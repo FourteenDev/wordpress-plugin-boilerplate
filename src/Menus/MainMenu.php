@@ -64,7 +64,7 @@ class MainMenu extends Base
 				'label'   => esc_html__('Example Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'general',
 				'type'    => 'text',
-				'default' => '',
+				'default' => 'Hello',
 				'args'    => [
 					'description' => esc_html__('Example description.', 'wordpress-boilerplate-plugin'),
 				],
@@ -74,9 +74,8 @@ class MainMenu extends Base
 				'label'   => esc_html__('Second Tab Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'text',
-				'default' => '',
 				'args'    => [
-					'description' => esc_html__('Second tab description.', 'wordpress-boilerplate-plugin'),
+					'description' => nl2br(esc_html__("Second tab description. \nSecond line.", 'wordpress-boilerplate-plugin')),
 				],
 			],
 			'test_number_field'   => [
@@ -85,7 +84,6 @@ class MainMenu extends Base
 				'section' => 'second',
 				'type'    => 'number',
 				'default' => 0,
-				'args'    => [],
 			],
 			'test_checkbox_field' => [
 				'id'      => 'test_checkbox_field',
@@ -93,14 +91,12 @@ class MainMenu extends Base
 				'section' => 'second',
 				'type'    => 'checkbox',
 				'default' => true,
-				'args'    => [],
 			],
 			'test_textarea_field' => [
 				'id'      => 'test_textarea_field',
 				'label'   => esc_html__('Textarea Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'textarea',
-				'default' => '',
 				'args'    => [
 					'placeholder' => esc_html__('Placeholder', 'wordpress-boilerplate-plugin'),
 				],
@@ -110,7 +106,6 @@ class MainMenu extends Base
 				'label'   => esc_html__('Select Field', 'wordpress-boilerplate-plugin'),
 				'section' => 'second',
 				'type'    => 'select',
-				'default' => '',
 				'args'    => [
 					'options'  => [
 						// Either keep the options empty here and populate them using the `fdwpbp_menus_main_fields` filter like below
