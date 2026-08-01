@@ -1,5 +1,18 @@
 <?php if (!defined('ABSPATH')) exit; ?>
 <div class="wrap fdwpbp-wrap">
+	<?php
+	if (isset($_GET['settings-updated']) && $_GET['settings-updated'])
+	{
+		add_settings_error(
+			"{$menuSlug}_group",
+			"{$menuSlug}_settings_updated",
+			__('Settings saved successfully.', 'wordpress-boilerplate-plugin'),
+			'updated'
+		);
+	}
+
+	settings_errors("{$menuSlug}_group");
+	?>
 	<div class="fdwpbp-wrap__main">
 		<h1><?php echo esc_html($title); ?></h1>
 
