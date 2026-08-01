@@ -39,5 +39,15 @@ class Asset
 		wp_enqueue_style('fdwpbp_public', FDWPBP()->url('assets/public/css/public.css'), [], FDWPBP_VERSION);
 
 		wp_enqueue_script('fdwpbp_public', FDWPBP()->url('assets/public/js/public.js'), [], FDWPBP_VERSION, true);
+
+		wp_localize_script('fdwpbp_public', 'fdwpbpData', [
+			'ajaxUrl' => admin_url('admin-ajax.php'),
+			'nonce'   => wp_create_nonce('fdwpbp_nonce'),
+			'strings' => [
+				'stringOne' => __('String 1', 'wordpress-boilerplate-plugin'),
+				// translators: %d: Test string number.
+				'stringTwo' => sprintf(__('String %d', 'wordpress-boilerplate-plugin'), 2),
+			],
+		]);
 	}
 }
