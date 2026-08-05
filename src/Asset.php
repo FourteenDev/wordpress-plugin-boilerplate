@@ -30,6 +30,8 @@ class Asset
 	/**
 	 * Enqueues public styles and scripts.
 	 *
+	 * @global	\WP_Post	$post
+	 *
 	 * @return	void
 	 *
 	 * @hooked	action: `wp_enqueue_scripts` - 10
@@ -40,18 +42,32 @@ class Asset
 
 		wp_enqueue_script('fdwpbp_public', FDWPBP()->url('assets/public/js/public.js'), [], FDWPBP_VERSION, true);
 
-		// How to use checkbox options in JavaScript
-		$checkboxValue = filter_var(FDWPBP()->option('test_checkbox_field', true), FILTER_VALIDATE_BOOLEAN);
-
-		wp_localize_script('fdwpbp_public', 'fdwpbpData', [
+		// Localized data
+		$fdwpbpData = [
 			'ajaxUrl'  => admin_url('admin-ajax.php'),
 			'nonce'    => wp_create_nonce('fdwpbp_nonce'),
-			'checkbox' => json_encode($checkboxValue),
+			// How to use checkbox options in JavaScript
+			'checkbox' => json_encode(filter_var(FDWPBP()->option('test_checkbox_field', true), FILTER_VALIDATE_BOOLEAN)),
 			'strings'  => [
 				'stringOne' => __('String 1', 'wordpress-boilerplate-plugin'),
 				// translators: %d: Test string number.
 				'stringTwo' => sprintf(__('String %d', 'wordpress-boilerplate-plugin'), 2),
 			],
-		]);
+		];
+
+		// Enqueue post type separated JS files if exist
+		global $post;
+		if ($post instanceof \WP_Post)
+		{
+			$postType = sanitize_key($post->post_type);
+
+			if (file_exists(FDWPBP()->dir("assets/public/js/public-$postType.js")))
+				wp_enqueue_script("fdwpbp_public_$postType", FDWPBP()->url("assets/public/js/public-$postType.js"), ['jquery'], FDWPBP_VERSION, true);
+
+			$fdwpbpData['postId']   = intval($post->ID);
+			$fdwpbpData['postType'] = $postType;
+		}
+
+		wp_localize_script('fdwpbp_public', 'fdwpbpData', $fdwpbpData);
 	}
 }
