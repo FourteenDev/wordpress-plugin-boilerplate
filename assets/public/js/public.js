@@ -9,6 +9,9 @@
 
 		// TODO: Uncomment this and modify values
 		// FDWPBP.init();
+
+		// How to use checkbox options in JavaScript
+		// let testCheckbox = (typeof fdwpbpData !== 'undefined' && typeof fdwpbpData.checkbox !== 'undefined') ? JSON.parse(fdwpbpData.checkbox) : true;
 	});
 
 	var FDWPBP = {

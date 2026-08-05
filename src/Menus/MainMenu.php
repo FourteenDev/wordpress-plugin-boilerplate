@@ -91,7 +91,7 @@ class MainMenu extends Base
 				'section' => 'second',
 				'type'    => 'checkbox',
 				'default' => true,
-			],
+			], // A demonstration of how to use checkboxes can be found in `Asset.php` class
 			'test_textarea_field' => [
 				'id'      => 'test_textarea_field',
 				'label'   => esc_html__('Textarea Field', 'wordpress-boilerplate-plugin'),
