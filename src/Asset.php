@@ -24,7 +24,7 @@ class Asset
 		// if (strpos($hookSuffix, FDWPBP_MENUS_SLUG) !== false)
 		wp_enqueue_style('fdwpbp_admin', FDWPBP()->url('assets/admin/css/admin.css'), [], FDWPBP_VERSION);
 
-		wp_enqueue_script('fdwpbp_admin', FDWPBP()->url('assets/admin/js/admin.js'), [], FDWPBP_VERSION, true);
+		wp_enqueue_script('fdwpbp_admin', FDWPBP()->url('assets/admin/js/admin.js'), ['jquery'], FDWPBP_VERSION, true);
 	}
 
 	/**
@@ -40,7 +40,7 @@ class Asset
 	{
 		wp_enqueue_style('fdwpbp_public', FDWPBP()->url('assets/public/css/public.css'), [], FDWPBP_VERSION);
 
-		wp_enqueue_script('fdwpbp_public', FDWPBP()->url('assets/public/js/public.js'), [], FDWPBP_VERSION, true);
+		wp_enqueue_script('fdwpbp_public', FDWPBP()->url('assets/public/js/public.js'), ['jquery'], FDWPBP_VERSION, true);
 
 		// Localized data
 		$fdwpbpData = [
