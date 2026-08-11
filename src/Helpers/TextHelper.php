@@ -3,9 +3,9 @@
 namespace WordPressBoilerplatePlugin\Helpers;
 
 /**
- * This is an example helper class as a showcase.
+ * Provides helper methods for text manipulation. (Example helpder class)
  *
- * You call these methods in other classes of the plugin (or anywhere else in WordPress), like this:
+ * Call these methods in other classes of the plugin (or anywhere else), like this:
  * `\WordPressBoilerplatePlugin\Helpers\TextHelper::replaceEnglishDigits('123');`
  */
 class TextHelper

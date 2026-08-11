@@ -2,6 +2,9 @@
 
 namespace WordPressBoilerplatePlugin\Services;
 
+/**
+ * Manages admin notice messages for the plugin.
+ */
 class NoticeManager
 {
 	/**

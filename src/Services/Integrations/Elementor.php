@@ -2,6 +2,9 @@
 
 namespace WordPressBoilerplatePlugin\Services\Integrations;
 
+/**
+ * Handles Elementor integrations. (Example service class)
+ */
 class Elementor
 {
 	public function __construct()

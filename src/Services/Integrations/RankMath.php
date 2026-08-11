@@ -2,6 +2,9 @@
 
 namespace WordPressBoilerplatePlugin\Services\Integrations;
 
+/**
+ * Handles RankMath integrations. (Example service class)
+ */
 class RankMath
 {
 	public function __construct()

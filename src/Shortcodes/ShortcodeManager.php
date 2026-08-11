@@ -4,6 +4,9 @@ namespace WordPressBoilerplatePlugin\Shortcodes;
 
 use WordPressBoilerplatePlugin\Container;
 
+/**
+ * Manages registration of shortcodes.
+ */
 class ShortcodeManager
 {
 	private Container $container;
