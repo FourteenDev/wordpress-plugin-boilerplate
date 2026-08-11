@@ -4,9 +4,9 @@ namespace WordPressBoilerplatePlugin;
 
 class Menu
 {
-	protected $container;
+	protected Container $container;
 
-	private $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
+	private string $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
 
 	public function __construct(Container $container)
 	{

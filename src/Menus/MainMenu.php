@@ -4,7 +4,7 @@ namespace WordPressBoilerplatePlugin\Menus;
 
 class MainMenu extends Base
 {
-	protected $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
+	protected string $menuSlug = FDWPBP_MENUS_SLUG . '_settings';
 
 	public function __construct()
 	{
@@ -26,7 +26,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
-	public function addSubmenu($submenus): array
+	public function addSubmenu(array $submenus): array
 	{
 		$submenus['settings'] = [
 			'page_title' => esc_html__('WordPress Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
@@ -130,7 +130,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_main_fields` - 10
 	 */
-	public function populateSelectValues($fields): array
+	public function populateSelectValues(array $fields): array
 	{
 		if (empty($fields['test_select_field'])) return $fields;
 
@@ -150,7 +150,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_validate_input_example_field` - 10
 	 */
-	public function sanitizeExampleField($value): string
+	public function sanitizeExampleField(array $value): string
 	{
 		if ($value == 'this')
 			$value = 'that';

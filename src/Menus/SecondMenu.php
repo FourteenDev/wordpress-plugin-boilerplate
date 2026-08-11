@@ -4,7 +4,7 @@ namespace WordPressBoilerplatePlugin\Menus;
 
 class SecondMenu extends Base
 {
-	protected $menuSlug = FDWPBP_MENUS_SLUG . '_second';
+	protected string $menuSlug = FDWPBP_MENUS_SLUG . '_second';
 
 	/**
 	 * Adds the submenu.
@@ -15,7 +15,7 @@ class SecondMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
-	public function addSubmenu($submenus): array
+	public function addSubmenu(array $submenus): array
 	{
 		$submenus['second'] = [
 			'page_title' => esc_html__('More Boilerplate Settings', 'wordpress-boilerplate-plugin'),

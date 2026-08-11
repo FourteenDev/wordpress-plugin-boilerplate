@@ -5,10 +5,10 @@ namespace WordPressBoilerplatePlugin;
 class Model
 {
 	/** @var	\wpdb */
-	private $wpdb;
+	private \wpdb $wpdb;
 
 	/** @var	string */
-	private $charsetCollate;
+	private string $charsetCollate;
 
 	/**
 	 * Constructor.

@@ -4,7 +4,7 @@ namespace WordPressBoilerplatePlugin\Menus;
 
 class CustomMenu extends Base
 {
-	protected $menuSlug = FDWPBP_MENUS_SLUG . '_custom';
+	protected string $menuSlug = FDWPBP_MENUS_SLUG . '_custom';
 
 	/**
 	 * Adds the submenu.
@@ -15,7 +15,7 @@ class CustomMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
-	public function addSubmenu($submenus): array
+	public function addSubmenu(array $submenus): array
 	{
 		$submenus['custom'] = [
 			'page_title' => esc_html__('Custom Menu', 'wordpress-boilerplate-plugin'),
