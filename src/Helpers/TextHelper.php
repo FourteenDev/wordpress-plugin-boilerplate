@@ -17,7 +17,7 @@ class TextHelper
 	 *
 	 * @return	string	$output		String with Persian digits.
 	 */
-	public static function replaceEnglishDigits($input)
+	public static function replaceEnglishDigits($input): string
 	{
 		$output = str_replace('0', '۰', $input);
 		$output = str_replace('1', '۱', $output);

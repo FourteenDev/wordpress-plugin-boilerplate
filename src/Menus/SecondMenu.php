@@ -15,7 +15,7 @@ class SecondMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
-	public function addSubmenu($submenus)
+	public function addSubmenu($submenus): array
 	{
 		$submenus['second'] = [
 			'page_title' => esc_html__('More Boilerplate Settings', 'wordpress-boilerplate-plugin'),
@@ -32,7 +32,7 @@ class SecondMenu extends Base
 	 *
 	 * @return	array
 	 */
-	public function getTabs()
+	public function getTabs(): array
 	{
 		return [
 			'general' => esc_html__('General', 'wordpress-boilerplate-plugin'),
@@ -45,7 +45,7 @@ class SecondMenu extends Base
 	 *
 	 * @return	array
 	 */
-	public function getFields()
+	public function getFields(): array
 	{
 		return [
 			'example_field_second' => [

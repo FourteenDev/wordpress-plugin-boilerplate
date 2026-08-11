@@ -26,7 +26,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_submenus` - 10
 	 */
-	public function addSubmenu($submenus)
+	public function addSubmenu($submenus): array
 	{
 		$submenus['settings'] = [
 			'page_title' => esc_html__('WordPress Boilerplate Plugin', 'wordpress-boilerplate-plugin'),
@@ -43,7 +43,7 @@ class MainMenu extends Base
 	 *
 	 * @return	array
 	 */
-	public function getTabs()
+	public function getTabs(): array
 	{
 		return apply_filters('fdwpbp_menus_main_tabs', [
 			'general' => esc_html__('General Settings', 'wordpress-boilerplate-plugin'),
@@ -56,7 +56,7 @@ class MainMenu extends Base
 	 *
 	 * @return	array
 	 */
-	public function getFields()
+	public function getFields(): array
 	{
 		return apply_filters('fdwpbp_menus_main_fields', [
 			'example_field'       => [
@@ -130,7 +130,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_menus_main_fields` - 10
 	 */
-	public function populateSelectValues($fields)
+	public function populateSelectValues($fields): array
 	{
 		if (empty($fields['test_select_field'])) return $fields;
 
@@ -150,7 +150,7 @@ class MainMenu extends Base
 	 *
 	 * @hooked	filter: `fdwpbp_validate_input_example_field` - 10
 	 */
-	public function sanitizeExampleField($value)
+	public function sanitizeExampleField($value): string
 	{
 		if ($value == 'this')
 			$value = 'that';

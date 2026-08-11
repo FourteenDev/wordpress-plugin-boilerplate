@@ -19,7 +19,7 @@ class Asset
 	 *
 	 * @hooked	action: `admin_enqueue_scripts` - 10
 	 */
-	public function enqueueAdminScripts($hookSuffix)
+	public function enqueueAdminScripts($hookSuffix): void
 	{
 		// if (strpos($hookSuffix, FDWPBP_MENUS_SLUG) !== false)
 		wp_enqueue_style('fdwpbp_admin', FDWPBP()->url('assets/admin/css/admin.css'), [], FDWPBP_VERSION);
@@ -36,7 +36,7 @@ class Asset
 	 *
 	 * @hooked	action: `wp_enqueue_scripts` - 10
 	 */
-	public function enqueuePublicScripts()
+	public function enqueuePublicScripts(): void
 	{
 		wp_enqueue_style('fdwpbp_public', FDWPBP()->url('assets/public/css/public.css'), [], FDWPBP_VERSION);
 
