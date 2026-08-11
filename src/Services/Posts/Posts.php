@@ -5,7 +5,7 @@ namespace WordPressBoilerplatePlugin\Services\Posts;
 /**
  * Handles post related features and modifications. (Example service class)
  */
-class Post
+class Posts
 {
 	public function __construct()
 	{
