@@ -2,7 +2,7 @@
 
 A **scalable and advanced** WordPress plugin boilerplate.
 
-`v3.2.0` ([Changelog](CHANGELOG.md))
+`v3.3.0` ([Changelog](CHANGELOG.md))
 
 ## Requirements
 

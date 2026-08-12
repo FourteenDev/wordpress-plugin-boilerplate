@@ -11,6 +11,26 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ### Fixed
 ### Security
 
+## [v3.3.0] - 2026-08-12
+### Added
+- Enqueued JavaScript asset files dynamically based on post type.
+- Added `Logger` class to log errors and debug messages.
+- Added an example method on how to sanitize/validate settings fields.
+- Added settings updated notice and `settings_errors()` to settings wrapper view.
+- Added `resize: both;` CSS rule to textareas in settings.
+- Handled possible initialization errors.
+- Added PHPDoc to most of the classes.
+### Changed
+- Refactored `public.js` file to use object literal syntax.
+- Improved `NoticeManager` class.
+- Changed return type of settings callback in `Base.php` class to `void`.
+- Renamed `Post` service class to `Posts`.
+- Updated `.gitignore` file to ignore AI related files and folders.
+### Fixed
+- Added missing method return types.
+- Added most of the missing attribute and function parameters type declarations.
+- Added missing dependency injections.
+
 ## [v3.2.0] - 2026-01-28
 ### Added
 - Added textarea HTML element field (#3).
@@ -49,7 +69,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [v2.0.0] - 2025-02-08
 ### Added
-- Added Base model class and an example model.
+- Added `Base` model class and an example model.
 - Added an example controller.
 - Added an example service class (commented).
 - Added some example integration classes (commented).
@@ -60,8 +80,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Added a (commented) filter to remove the default submenu.
 - Added a statement to check for required plugins before executing the core class.
 ### Changed
-- Improved Model class.
-- Improved base menu class.
+- Improved `Model` class.
+- Improved `Base` menu class.
 - Renamed 'Settings' folder and classes to 'Menus'.
 - Added hooks to `validateSettings()` + Improved the method.
 ### Security
@@ -76,7 +96,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Made settings and menus much more dynamic.
 - Made default tab selection more dynamic.
 
-[Unreleased]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v3.2.0...main
+[Unreleased]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v3.3.0...main
+[v3.3.0]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v3.2.0...v3.3.0
 [v3.2.0]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v3.1.0...v3.2.0
 [v3.1.0]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v3.0.0...v3.1.0
 [v3.0.0]: https://GitHub.com/FourteenDev/wordpress-plugin-boilerplate/compare/v2.1.0...v3.0.0
